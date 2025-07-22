@@ -1,0 +1,384 @@
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.switch-field {
+	display: flex;
+	margin-bottom: 36px;
+	overflow: hidden;
+}
+
+.switch-field input {
+	position: absolute !important;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	border: 0;
+	overflow: hidden;
+}
+
+.switch-field label {
+	background-color: #e4e4e4;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 14px;
+	line-height: 1;
+	text-align: center;
+	padding: 8px 16px;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+	transition: all 0.1s ease-in-out;
+}
+
+.switch-field label:hover {
+	cursor: pointer;
+}
+
+.switch-field input:checked + label {
+	background-color: #a5dc86;
+	box-shadow: none;
+}
+
+.switch-field label:first-of-type {
+	border-radius: 4px 0 0 4px;
+}
+
+.switch-field label:last-of-type {
+	border-radius: 0 4px 4px 0;
+}
+
+.form {
+	max-width: 270px;
+	font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
+	font-weight: normal;
+	line-height: 1.625;
+	margin: 8px auto;
+	padding-left: 16px;
+	z-index: 2;
+}
+
+h2 {
+	font-size: 18px;
+	margin-bottom: 8px;
+}
+.area{
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 76%;
+  border: 0;
+  margin: 0 0 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  height: 35px;
+  border-radius: 5px;
+}
+
+.location{
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 76%;
+  border: 0;
+  margin: 0 0 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.submit{
+  background: #a5dc86;
+  width: 76%;
+  border: 0;
+  margin: 25px 0 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+	height: 35px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.result{
+		background: #dcd686;
+		width: 76%;
+		border: 0;
+		margin: 25px 0 10px;
+		box-sizing: border-box;
+		font-size: 15px;
+		height: 35px;
+		text-align: center;
+}
+
+.img {
+  background: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+	background-repeat: no-repeat;
+  background-size: auto;
+  background-size:100% 100%;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(15px);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+body, html {
+  height: 100%;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+/* Dark Mode Color Palette */
+:root {
+    --primary-color: #66BB6A; /* A slightly brighter green for dark mode accent */
+    --background-color: #282c34; /* Dark charcoal background */
+    --container-bg: #3c414c; /* Slightly lighter dark for container */
+    --text-color: #e0e0e0; /* Light gray for main text */
+    --light-text-color: #b0b0b0; /* Even lighter gray for secondary text */
+    --border-color: #555;
+    --focus-color: #81C784; /* Lighter green for focus */
+    --shadow-color: rgba(0, 0, 0, 0.4); /* Darker shadow */
+    --switch-bg-off: #4a4f58; /* Background for unselected switch */
+    --switch-label-off: #b0b0b0; /* Text color for unselected switch */
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color); /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Crucial: No scrolling */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+/* Removed .background-image and the linear gradient from body as it's a solid dark background */
+
+.container {
+    background-color: var(--container-bg); /* Darker background for the form container */
+    padding: 30px 40px; /* Reduced vertical padding slightly for more space, kept horizontal */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    animation: fadeIn 0.8s ease-out;
+    z-index: 1;
+    /* Adjusted min-height for better vertical centering, allow to grow */
+    min-height: 70vh; /* Make container occupy a good portion of viewport height */
+    display: flex; /* Use flexbox for internal layout */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Distribute space between header, form, and result */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header {
+    margin-bottom: 25px; /* Slightly reduced margin to save space */
+    padding-top: 0; /* Removed specific padding as container handles overall padding */
+}
+
+header h1 {
+    font-size: 2.2em; /* Slightly reduced font size for the heading */
+    color: var(--primary-color);
+    margin-bottom: 8px; /* Reduced margin */
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1em; /* Slightly reduced font size for description */
+    color: var(--light-text-color);
+    line-height: 1.5; /* Adjusted line height */
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Reduced gap slightly between form groups */
+    flex-grow: 1; /* Allow form section to grow and take available space */
+    justify-content: center; /* Center content vertically within the section */
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1em; /* Slightly reduced label font size */
+    font-weight: 600;
+    margin-bottom: 8px; /* Reduced margin */
+    color: var(--text-color);
+}
+
+input[type="text"],
+select {
+    width: calc(100% - 20px);
+    padding: 10px; /* Reduced padding slightly */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95em; /* Adjusted font size */
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    outline: none;
+    background-color: var(--switch-bg-off); /* Darker background for inputs */
+    color: var(--text-color); /* Light text color for inputs */
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: var(--focus-color);
+    box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.2); /* Adjusted shadow color for dark mode */
+    background-color: #4a4f58; /* Slightly lighter on focus */
+}
+
+/* Switch Field (BHK and Bath) */
+.switch-field {
+    display: flex;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); /* Darker inset shadow */
+}
+
+.switch-field input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+
+.switch-field label {
+    background-color: var(--switch-bg-off); /* Dark background for unselected */
+    color: var(--switch-label-off); /* Lighter text for unselected */
+    font-size: 0.9em; /* Slightly reduced font size */
+    line-height: 1;
+    text-align: center;
+    padding: 10px 14px; /* Reduced padding */
+    margin-right: -1px;
+    flex-grow: 1;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border-right: 1px solid var(--border-color);
+}
+
+.switch-field label:last-of-type {
+    border-right: none;
+}
+
+.switch-field label:hover {
+    background-color: #5b606b; /* Slightly lighter hover for dark mode */
+}
+
+.switch-field input:checked + label {
+    background-color: var(--primary-color);
+    color: #fff; /* White text for selected */
+    box-shadow: none;
+    transform: translateY(-1px);
+}
+
+.switch-field label:first-of-type {
+    border-radius: 8px 0 0 8px;
+}
+
+.switch-field label:last-of-type {
+    border-radius: 0 8px 8px 0;
+}
+
+/* Submit Button */
+.submit-button {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 20px; /* Reduced padding slightly */
+    border-radius: 8px;
+    font-size: 1.1em; /* Reduced font size */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 15px; /* Adjusted margin top */
+    box-shadow: 0 4px 10px rgba(102, 187, 106, 0.2); /* Adjusted shadow for dark mode */
+}
+
+.submit-button:hover {
+    background-color: #5cb85c; /* Slightly darker green for hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(102, 187, 106, 0.3);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+/* Result Display */
+.result {
+    background-color: #4a4f58; /* Darker background for result */
+    padding: 12px; /* Reduced padding */
+    border-radius: 8px;
+    margin-top: 20px; /* Adjusted margin */
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 1.1em; /* Reduced font size */
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 45px; /* Reduced min-height */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    margin-bottom: 0; /* Ensure no bottom margin pushing content down */
+}
+
+.result h3 {
+    margin: 0;
+    font-size: 1.2em; /* Slightly reduced font size */
+    color: var(--primary-color);
+}
+
+.result #priceValue {
+    font-weight: 700;
+    margin-left: 8px;
+    font-size: 1.3em; /* Slightly reduced font size */
+}
+
+/* Placeholder styling for select */
+select option[disabled]:first-child {
+    color: var(--light-text-color);
+}
+
+/* Ensure placeholder text is visible in dark mode */
+input::placeholder {
+    color: var(--light-text-color);
+    opacity: 0.7; /* Make it slightly transparent */
+}
+select {
+    -webkit-appearance: none; /* Remove default arrow on select */
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23b0b0b0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
